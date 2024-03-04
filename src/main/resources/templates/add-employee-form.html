@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="vh-100 w-100 mw-100">
+<head th:replace="~{head-fragment :: head}">
+</head>
+<body class="w-100 h-100">
+    <main class="container-lg d-flex flex-column justify-content-center align-items-center w-100 h-100">
+        <h1 class="mt-2 mb-4 text-primary">ADD EMPLOYEE</h1>
+        <hr class="mb-5">
+        <form
+            th:action="@{/employees}"
+            th:object="${employee}"
+            method="POST"
+            class="
+                d-flex
+                flex-column
+                flex-md-row
+                flex-wrap
+                gap-2
+                align-items-center
+                justify-content-around
+                border
+                rounded
+                container-md
+                p-4
+                "
+        >
+
+            <fieldset class="mb-3 col-auto">
+                <legend>Name</legend>
+                <input
+                        type="text"
+                        th:field="*{name}"
+                        placeholder="Enter name"
+                        class="form-control"
+                        aria-label="enter name"
+                        aria-describedby="nameDescriber" required>
+                <div id="nameDescriber" class="form-text invisible">
+                    Enter your name.
+                </div>
+            </fieldset>
+            <fieldset class="mb-3 col-auto">
+                <legend>E-Mail</legend>
+                <input
+                        type="text"
+                        th:field="*{email}"
+                        placeholder="Enter email"
+                        class="form-control"
+                        aria-label="enter email"
+                        aria-describedby="emailDescriber" required>
+                <div id="emailDescriber" class="form-text invisible">
+                    Enter your email.
+                </div>
+            </fieldset>
+            <fieldset class="mb-3 col-auto">
+                <legend>Department</legend>
+                <input
+                        type="text"
+                        th:field="*{department}"
+                        placeholder="Enter department"
+                        class="form-control"
+                        aria-label="enter department"
+                        aria-describedby="departmentDescriber" required>
+                <div id="departmentDescriber" class="form-text invisible">
+                    Enter your department.
+                </div>
+            </fieldset>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary h-100">SAVE</button>
+            </div>
+
+
+            <input type="hidden" th:field="*{id}" >
+        </form>
+    </main>
+</body>
+</html>

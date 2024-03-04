@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{head-fragment :: head}">
+</head>
+<body>
+   <main class="p-2">
+       <h1 th:text="${page_title}" class="mt-2 mb-4"></h1>
+
+       <a
+               th:href="@{/employees/save}"
+               th:text="'ADD EMPLOYEE'"
+               class="btn btn-primary mb-4"
+       ></a>
+       <table class="table table-striped table-hover table-bordered">
+           <caption th:text="${page_title} + ' List &copy; Dietmar Eisner ' + ${actual_year}"></caption>
+           <thead class="table-header">
+           <tr>
+               <th>ID</th>
+               <th>Name</th>
+               <th>E-Mail</th>
+               <th>Department</th>
+               <th>Action</th>
+           </tr>
+           </thead>
+           <tbody class="table-group-divider">
+           <tr th:each="employee : ${employees}">
+               <th th:text="${employee.id}"></th>
+               <td th:text="${employee.name}"></td>
+               <td th:text="${employee.email}"></td>
+               <td th:text="${employee.department}"></td>
+               <td class="d-flex gap-3 justify-content-around p-2">
+                   <a th:href="@{/employees/update/{id}(id=${employee.id})}">
+                       <i class="fa-solid fa-user-pen text-warning fs-4"></i>
+                   </a>
+                   <a th:href="@{/employees/delete/{id}(id=${employee.id})}">
+                       <i class="fa-solid fa-user-minus text-danger fs-4"></i>
+                   </a>
+               </td>
+           </tr>
+           </tbody>
+       </table>
+   </main>
+</body>
+</html>
